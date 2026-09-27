@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kasblar xarakteristikasi — Professiogramma</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="scene">
+
+        <div class="background"></div>
+
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+
+        <div class="grid"></div>
+
+        <div id="particles"></div>
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="badge">
+                OCHIQ DARS
+            </div>
+
+            <h1>
+                Kasblar xarakteristikasi
+            </h1>
+
+            <div class="subtitle">
+                PROFESSIOGRAMMA
+            </div>
+
+        </header>
+
+
+        <!-- MAIN -->
+        <main class="stage">
+
+            <div id="orbit" class="orbit">
+
+                <div class="orbit-ring ring-1"></div>
+                <div class="orbit-ring ring-2"></div>
+                <div class="orbit-ring ring-3"></div>
+
+
+                <!-- CENTER -->
+                <div class="center">
+
+                    <div id="centerIcon" class="center-icon">
+                        ⚙
+                    </div>
+
+                    <h2 id="centerTitle">
+                        Kasblar olami
+                    </h2>
+
+                    <p id="centerText">
+                        Kasbga qo‘yiladigan asosiy talablar majmui
+                    </p>
+
+                </div>
+
+
+                <!-- SHIFOKOR -->
+                <div
+                    class="profession doctor"
+                    data-name="Shifokor"
+                    data-icon="⚕"
+                    data-description="Diqqatlilik, mas’uliyat va xotirjamlik talab etiladi."
+                >
+
+                    <div class="profession-icon">
+                        ⚕
+                    </div>
+
+                    <div class="profession-name">
+                        Shifokor
+                    </div>
+
+                    <div class="profession-skills">
+                        Diqqatlilik · Mas’uliyat · Xotirjamlik
+                    </div>
+
+                </div>
+
+
+                <!-- O‘QITUVCHI -->
+                <div
+                    class="profession teacher"
+                    data-name="O‘qituvchi"
+                    data-icon="🎓"
+                    data-description="Sabr-toqat, kuchli nutq, ijodkorlik va mas’uliyat talab qiladigan muhim kasb."
+                >
+
+                    <div class="ribbon">
+                        MUHIM KASB
+                    </div>
+
+                    <div class="profession-icon">
+                        🎓
+                    </div>
+
+                    <div class="profession-name">
+                        O‘qituvchi
+                    </div>
+
+                    <div class="profession-skills">
+                        Sabr-toqat · Nutq · Ijodkorlik
+                    </div>
+
+                </div>
+
+
+                <!-- MUHANDIS -->
+                <div
+                    class="profession engineer"
+                    data-name="Muhandis"
+                    data-icon="⚙"
+                    data-description="Aniqlik, mantiqiy fikrlash va texnik bilim muhandis uchun muhim."
+                >
+
+                    <div class="profession-icon">
+                        ⚙
+                    </div>
+
+                    <div class="profession-name">
+                        Muhandis
+                    </div>
+
+                    <div class="profession-skills">
+                        Aniqlik · Mantiq · Texnik bilim
+                    </div>
+
+                </div>
+
+
+                <!-- DEHQON -->
+                <div
+                    class="profession farmer"
+                    data-name="Dehqon"
+                    data-icon="🌱"
+                    data-description="Chidamlilik, mehnatsevarlik va tabiatni tushunish muhim ahamiyatga ega."
+                >
+
+                    <div class="profession-icon">
+                        🌱
+                    </div>
+
+                    <div class="profession-name">
+                        Dehqon
+                    </div>
+
+                    <div class="profession-skills">
+                        Chidamlilik · Mehnatsevarlik · Tabiat
+                    </div>
+
+                </div>
+
+
+                <!-- DASTURCHI -->
+                <div
+                    class="profession coder"
+                    data-name="Dasturchi"
+                    data-icon="&lt;/&gt;"
+                    data-description="Mantiqiy fikrlash, diqqat va muammolarni yecha olish qobiliyati zarur."
+                >
+
+                    <div class="profession-icon">
+                        &lt;/&gt;
+                    </div>
+
+                    <div class="profession-name">
+                        Dasturchi
+                    </div>
+
+                    <div class="profession-skills">
+                        Mantiq · Diqqat · Muammo yechish
+                    </div>
+
+                </div>
+
+
+                <!-- RASSOM -->
+                <div
+                    class="profession artist"
+                    data-name="Rassom"
+                    data-icon="✦"
+                    data-description="Tasavvur, nafis did va sabr ijodiy kasb uchun asosiy fazilatlardir."
+                >
+
+                    <div class="profession-icon">
+                        ✦
+                    </div>
+
+                    <div class="profession-name">
+                        Rassom
+                    </div>
+
+                    <div class="profession-skills">
+                        Tasavvur · Nafis did · Sabr
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- CONTROLS -->
+        <div class="controls">
+
+            <button id="pauseBtn">
+                ⏸ <span>Pauza</span>
+            </button>
+
+            <button id="resetBtn">
+                ↻ <span>Reset</span>
+            </button>
+
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <div class="footer-items">
+
+                <span>01 — KASB</span>
+                <span>02 — TALAB</span>
+                <span>03 — QOBILIYAT</span>
+                <span>04 — XARAKTER</span>
+                <span>05 — KELAJAK</span>
+
+            </div>
+
+            <div class="quote">
+                “To‘g‘ri kasb — to‘g‘ri kelajak”
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="./script.js"></script>
+
+</body>
+</html>
