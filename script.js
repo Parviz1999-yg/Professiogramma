@@ -10,155 +10,96 @@ const resetBtn = document.getElementById("resetBtn");
 const particles = document.getElementById("particles");
 
 let rotation = 0;
-let speed = 0.018;
 let paused = false;
-
-let radius = 300;
-
 let dragging = false;
 let lastX = 0;
 
+let speed = 0.025;
+let radius = 250;
 
-/* ================================
-   KARTALAR
-================================ */
-
-const cards = Array.from(professions).map(
-    (element, index) => {
-
-        return {
-            element: element,
-            angle: (360 / professions.length) * index
-        };
-
-    }
-);
+const cards = Array.from(professions).map((element, index) => ({
+    element: element,
+    angle: (360 / professions.length) * index
+}));
 
 
-/* ================================
-   RADIUS
-================================ */
+// ==============================
+// RADIUS
+// ==============================
 
 function updateRadius() {
-
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    if (width > 1200) {
-
-        radius = Math.min(
-            width * 0.24,
-            height * 0.30
-        );
-
-    } else if (width > 700) {
-
-        radius = Math.min(
-            width * 0.27,
-            height * 0.28
-        );
-
-    } else {
-
-        radius = Math.min(
-            width * 0.36,
-            height * 0.25
-        );
+    if (width >= 1200) {
+        radius = Math.min(width * 0.23, height * 0.30);
+    } 
+    else if (width >= 700) {
+        radius = Math.min(width * 0.27, height * 0.27);
+    } 
+    else {
+        radius = Math.min(width * 0.35, height * 0.24);
     }
 }
 
 
-/* ================================
-   KARTALARNI JOYLASHTIRISH
-================================ */
+// ==============================
+// KARTALARNI JOYLASHTIRISH
+// ==============================
 
 function updateCards() {
 
     cards.forEach(card => {
 
-        const angle =
-            card.angle + rotation;
+        const angle = card.angle + rotation;
 
-        const rad =
-            angle * Math.PI / 180;
+        const rad = angle * Math.PI / 180;
 
-        const x =
-            Math.sin(rad) * radius;
+        const x = Math.sin(rad) * radius;
+        const y = -Math.cos(rad) * radius;
 
-        const y =
-            -Math.cos(rad) * radius;
+        // Old-orqa masofani hisoblash
+        const depth = (Math.cos(rad) + 1) / 2;
 
+        const scale = 0.72 + depth * 0.28;
 
-        /*
-           Old tomondagi kartalar
-           kattaroq ko‘rinadi.
-        */
+        const opacity = 0.55 + depth * 0.45;
 
-        const depth =
-            (Math.cos(rad) + 1) / 2;
-
-        const scale =
-            0.72 + depth * 0.28;
-
-        const opacity =
-            0.45 + depth * 0.55;
-
-        const z =
-            Math.round(depth * 100);
+        const zIndex = Math.round(10 + depth * 100);
 
 
-        card.element.style.setProperty(
-            "--x",
-            `${x}px`
-        );
+        // MUHIM:
+        // transformni to‘g‘ridan-to‘g‘ri beramiz
+        card.element.style.transform =
+            `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0) scale(${scale})`;
 
-        card.element.style.setProperty(
-            "--y",
-            `${y}px`
-        );
+        card.element.style.opacity = opacity;
 
-        card.element.style.setProperty(
-            "--scale",
-            scale
-        );
+        card.element.style.zIndex = zIndex;
 
-        card.element.style.setProperty(
-            "--opacity",
-            opacity
-        );
+        card.element.style.willChange = "transform";
 
-        card.element.style.setProperty(
-            "--z",
-            z
-        );
     });
 }
 
 
-/* ================================
-   ANIMATION
-================================ */
+// ==============================
+// ANIMATSIYA
+// ==============================
 
 let lastTime = performance.now();
 
-function animate(time) {
+function animate(currentTime) {
 
-    const delta =
-        time - lastTime;
+    const delta = currentTime - lastTime;
 
-    lastTime = time;
-
+    lastTime = currentTime;
 
     if (!paused && !dragging) {
 
-        /*
-           Sekin va silliq aylanish.
-        */
+        rotation += speed * delta;
 
-        rotation +=
-            speed * delta;
     }
-
 
     updateCards();
 
@@ -168,75 +109,62 @@ function animate(time) {
 requestAnimationFrame(animate);
 
 
-/* ================================
-   BOSHLANG‘ICH HOLAT
-================================ */
+// ==============================
+// BOSHLANG‘ICH HOLAT
+// ==============================
 
 updateRadius();
 updateCards();
 
 
-/* ================================
-   RESIZE
-================================ */
+// ==============================
+// EKRAN O‘ZGARSA
+// ==============================
 
-window.addEventListener(
-    "resize",
-    () => {
+window.addEventListener("resize", () => {
 
-        updateRadius();
-        updateCards();
+    updateRadius();
+    updateCards();
 
+});
+
+
+// ==============================
+// TELEFONDA SUDRASH
+// ==============================
+
+orbit.addEventListener("pointerdown", event => {
+
+    if (event.target.closest(".profession")) {
+        return;
     }
-);
+
+    dragging = true;
+
+    lastX = event.clientX;
+
+    orbit.classList.add("dragging");
+
+    try {
+        orbit.setPointerCapture(event.pointerId);
+    } catch (error) {}
+
+});
 
 
-/* ================================
-   TELEFON / SICHQONCHA
-   BILAN AYLANtirish
-================================ */
+orbit.addEventListener("pointermove", event => {
 
-orbit.addEventListener(
-    "pointerdown",
-    event => {
-
-        if (
-            event.target.closest(".profession")
-        ) {
-            return;
-        }
-
-        dragging = true;
-
-        lastX = event.clientX;
-
-        orbit.classList.add("dragging");
-
-        orbit.setPointerCapture(
-            event.pointerId
-        );
+    if (!dragging) {
+        return;
     }
-);
 
+    const difference = event.clientX - lastX;
 
-orbit.addEventListener(
-    "pointermove",
-    event => {
+    rotation += difference * 0.3;
 
-        if (!dragging) {
-            return;
-        }
+    lastX = event.clientX;
 
-        const difference =
-            event.clientX - lastX;
-
-        rotation +=
-            difference * 0.25;
-
-        lastX =
-            event.clientX;
-    }
-);
+});
 
 
 function stopDragging(event) {
@@ -246,157 +174,126 @@ function stopDragging(event) {
     orbit.classList.remove("dragging");
 
     try {
+        orbit.releasePointerCapture(event.pointerId);
+    } catch (error) {}
 
-        orbit.releasePointerCapture(
-            event.pointerId
-        );
-
-    } catch (error) {
-
-        // Hech narsa qilmaymiz
-
-    }
 }
 
 
-orbit.addEventListener(
-    "pointerup",
-    stopDragging
-);
+orbit.addEventListener("pointerup", stopDragging);
 
-orbit.addEventListener(
-    "pointercancel",
-    stopDragging
-);
+orbit.addEventListener("pointercancel", stopDragging);
 
 
-/* ================================
-   KASB KARTASINI BOSISH
-================================ */
+// ==============================
+// KASB KARTASINI BOSISH
+// ==============================
 
 professions.forEach(card => {
 
-    card.addEventListener(
-        "click",
-        event => {
+    card.addEventListener("click", event => {
 
-            event.stopPropagation();
+        event.stopPropagation();
 
-            professions.forEach(item => {
+        professions.forEach(item => {
+            item.classList.remove("active");
+        });
 
-                item.classList.remove(
-                    "active"
-                );
+        card.classList.add("active");
 
-            });
+        centerIcon.innerHTML = card.dataset.icon;
 
-            card.classList.add("active");
+        centerTitle.textContent = card.dataset.name;
 
-
-            centerIcon.innerHTML =
-                card.dataset.icon;
-
-            centerTitle.textContent =
-                card.dataset.name;
-
-            centerText.textContent =
-                card.dataset.description;
+        centerText.textContent = card.dataset.description;
 
 
-            centerIcon.animate(
-                [
-                    {
-                        transform:
-                            "scale(.7)",
-                        opacity: 0.2
-                    },
-                    {
-                        transform:
-                            "scale(1.15)",
-                        opacity: 1
-                    },
-                    {
-                        transform:
-                            "scale(1)",
-                        opacity: 1
-                    }
-                ],
+        centerIcon.animate(
+            [
                 {
-                    duration: 450,
-                    easing:
-                        "cubic-bezier(.2,.8,.2,1)"
+                    transform: "scale(.7)",
+                    opacity: 0.2
+                },
+                {
+                    transform: "scale(1.15)",
+                    opacity: 1
+                },
+                {
+                    transform: "scale(1)",
+                    opacity: 1
                 }
-            );
-        }
-    );
+            ],
+            {
+                duration: 450,
+                easing: "cubic-bezier(.2,.8,.2,1)"
+            }
+        );
+
+    });
 
 });
 
 
-/* ================================
-   PAUZA
-================================ */
+// ==============================
+// PAUZA
+// ==============================
 
-pauseBtn.addEventListener(
-    "click",
-    () => {
+if (pauseBtn) {
+
+    pauseBtn.addEventListener("click", () => {
 
         paused = !paused;
 
         if (paused) {
 
-            pauseBtn.innerHTML =
-                "▶ <span>Davom</span>";
+            pauseBtn.innerHTML = "▶ <span>Davom</span>";
 
         } else {
 
-            pauseBtn.innerHTML =
-                "⏸ <span>Pauza</span>";
+            pauseBtn.innerHTML = "⏸ <span>Pauza</span>";
+
         }
-    }
-);
+
+    });
+
+}
 
 
-/* ================================
-   RESET
-================================ */
+// ==============================
+// RESET
+// ==============================
 
-resetBtn.addEventListener(
-    "click",
-    () => {
+if (resetBtn) {
+
+    resetBtn.addEventListener("click", () => {
 
         rotation = 0;
 
         paused = false;
 
-        pauseBtn.innerHTML =
-            "⏸ <span>Pauza</span>";
-
+        if (pauseBtn) {
+            pauseBtn.innerHTML = "⏸ <span>Pauza</span>";
+        }
 
         professions.forEach(card => {
-
-            card.classList.remove(
-                "active"
-            );
-
+            card.classList.remove("active");
         });
 
+        centerIcon.textContent = "⚙";
 
-        centerIcon.textContent =
-            "⚙";
-
-        centerTitle.textContent =
-            "Kasblar olami";
+        centerTitle.textContent = "Kasblar olami";
 
         centerText.textContent =
             "Kasbga qo‘yiladigan asosiy talablar majmui";
-    }
-);
+
+    });
+
+}
 
 
-/* ================================
-   PARTICLES
-================================ */
+// ==============================
+// PARTICLES
+// ==============================
 
 function createParticles() {
 
@@ -404,31 +301,19 @@ function createParticles() {
         return;
     }
 
-    const count =
-        window.innerWidth > 1400
-            ? 45
-            : 30;
+    const count = window.innerWidth > 1400 ? 45 : 30;
 
+    for (let i = 0; i < count; i++) {
 
-    for (
-        let i = 0;
-        i < count;
-        i++
-    ) {
+        const particle = document.createElement("div");
 
-        const particle =
-            document.createElement("div");
-
-        particle.className =
-            "particle";
-
+        particle.className = "particle";
 
         particle.style.left =
             Math.random() * 100 + "%";
 
         particle.style.top =
             Math.random() * 100 + "%";
-
 
         particle.style.setProperty(
             "--duration",
@@ -445,43 +330,33 @@ function createParticles() {
             (-150 + Math.random() * 300) + "px"
         );
 
+        const size = 1 + Math.random() * 3;
 
-        const size =
-            1 + Math.random() * 3;
+        particle.style.width = size + "px";
 
-        particle.style.width =
-            size + "px";
+        particle.style.height = size + "px";
 
-        particle.style.height =
-            size + "px";
+        particles.appendChild(particle);
 
-
-        particles.appendChild(
-            particle
-        );
     }
+
 }
 
 createParticles();
 
 
-/* ================================
-   O‘QITUVCHI
-================================ */
+// ==============================
+// O‘QITUVCHI
+// ==============================
 
-const teacher =
-    document.querySelector(".teacher");
+const teacher = document.querySelector(".teacher");
 
 if (teacher) {
 
-    setTimeout(
-        () => {
+    setTimeout(() => {
 
-            teacher.classList.add(
-                "active"
-            );
+        teacher.classList.add("active");
 
-        },
-        1200
-    );
+    }, 1200);
+
 }
