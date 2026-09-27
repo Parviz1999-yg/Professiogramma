@@ -9,7 +9,9 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+
     font-family: Arial, Helvetica, sans-serif;
+
     background: #06131d;
     color: white;
 }
@@ -18,108 +20,148 @@ body {
     min-height: 100vh;
 }
 
+
+/* =========================================================
+   ASOSIY SAHNA
+   ========================================================= */
+
 .scene {
     position: relative;
+
     width: 100vw;
     height: 100vh;
+
     overflow: hidden;
+
     background:
         radial-gradient(
             circle at 50% 50%,
             #123c4d 0%,
-            #081d2a 38%,
+            #081d2a 40%,
             #030b12 100%
         );
 }
 
-/* BACKGROUND */
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
 
 .background {
     position: absolute;
     inset: 0;
+
     background:
         radial-gradient(
-            circle at 20% 30%,
-            rgba(0, 220, 255, 0.12),
-            transparent 25%
+            circle at 15% 25%,
+            rgba(0, 220, 255, 0.13),
+            transparent 28%
         ),
         radial-gradient(
-            circle at 80% 70%,
-            rgba(0, 140, 255, 0.12),
+            circle at 85% 75%,
+            rgba(0, 140, 255, 0.13),
             transparent 30%
         );
 }
 
 .glow {
     position: absolute;
+
     border-radius: 50%;
+
     filter: blur(70px);
+
     pointer-events: none;
 }
 
 .glow-1 {
-    width: 350px;
-    height: 350px;
-    left: -100px;
-    top: -100px;
+    width: 420px;
+    height: 420px;
+
+    left: -120px;
+    top: -120px;
+
     background: rgba(0, 200, 255, 0.12);
 }
 
 .glow-2 {
-    width: 300px;
-    height: 300px;
-    right: -80px;
-    bottom: -80px;
+    width: 380px;
+    height: 380px;
+
+    right: -100px;
+    bottom: -100px;
+
     background: rgba(40, 100, 255, 0.12);
 }
 
 .glow-3 {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
+
     left: 45%;
     top: 35%;
+
     background: rgba(0, 255, 200, 0.06);
 }
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
 
 .grid {
     position: absolute;
     inset: 0;
-    opacity: 0.18;
+
+    opacity: 0.16;
+
     background-image:
         linear-gradient(
-            rgba(255,255,255,0.05) 1px,
+            rgba(255, 255, 255, 0.05) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255,255,255,0.05) 1px,
+            rgba(255, 255, 255, 0.05) 1px,
             transparent 1px
         );
-    background-size: 45px 45px;
-    mask-image: linear-gradient(
-        to bottom,
-        transparent,
-        black 25%,
-        black 75%,
-        transparent
-    );
+
+    background-size: 55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
 }
 
 
-/* PARTICLES */
+/* =========================================================
+   PARTICLES
+   ========================================================= */
 
 #particles {
     position: absolute;
     inset: 0;
+
     overflow: hidden;
+
     pointer-events: none;
 }
 
 .particle {
     position: absolute;
+
     border-radius: 50%;
+
     background: rgba(180, 240, 255, 0.8);
-    box-shadow: 0 0 8px rgba(100, 220, 255, 0.8);
+
+    box-shadow:
+        0 0 8px
+        rgba(100, 220, 255, 0.8);
 
     animation:
         particleMove
@@ -134,6 +176,7 @@ body {
     from {
         transform:
             translate3d(0, 0, 0);
+
         opacity: 0.15;
     }
 
@@ -144,72 +187,132 @@ body {
                 -80px,
                 0
             );
+
         opacity: 0.8;
     }
 }
 
 
-/* HEADER */
+/* =========================================================
+   HEADER — INTERAKTIV DOSKA
+   ========================================================= */
 
 .header {
     position: absolute;
-    top: 5vh;
+
+    top: 3.5vh;
     left: 50%;
+
     transform: translateX(-50%);
-    z-index: 20;
+
+    z-index: 200;
+
     text-align: center;
+
     width: 90%;
+
+    pointer-events: none;
 }
 
 .badge {
     display: inline-block;
-    padding: 7px 16px;
-    border: 1px solid rgba(100, 230, 255, 0.4);
+
+    padding: 9px 20px;
+
+    border:
+        1px solid
+        rgba(100, 230, 255, 0.4);
+
     border-radius: 30px;
+
     color: #8eeaff;
-    font-size: 11px;
+
+    font-size: clamp(11px, 0.8vw, 15px);
+
     letter-spacing: 3px;
+
     margin-bottom: 12px;
-    background: rgba(0, 40, 55, 0.45);
+
+    background:
+        rgba(0, 40, 55, 0.5);
+
     backdrop-filter: blur(10px);
 }
 
 .header h1 {
-    font-size: clamp(25px, 3vw, 48px);
+    font-size:
+        clamp(30px, 3.2vw, 58px);
+
     font-weight: 700;
+
     letter-spacing: 2px;
+
     text-shadow:
-        0 0 20px rgba(80, 220, 255, 0.3);
+        0 0 25px
+        rgba(80, 220, 255, 0.35);
 }
 
 .subtitle {
-    margin-top: 7px;
-    font-size: clamp(11px, 1vw, 15px);
-    letter-spacing: 7px;
+    margin-top: 8px;
+
+    font-size:
+        clamp(12px, 1vw, 17px);
+
+    letter-spacing: 8px;
+
     color: #71d9ed;
 }
 
 
-/* STAGE */
+/* =========================================================
+   STAGE
+   ========================================================= */
 
 .stage {
     position: absolute;
+
     inset: 0;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
-    padding-top: 5vh;
+
+    /*
+       Header va footer uchun joy qoldiramiz.
+    */
+
+    padding-top: 2vh;
 }
 
 
-/* ORBIT */
+/* =========================================================
+   ORBIT
+   ========================================================= */
 
 .orbit {
     position: relative;
-    width: min(92vw, 950px);
-    height: min(72vh, 650px);
+
+    /*
+       Interaktiv doska uchun asosiy o‘lcham.
+    */
+
+    width: min(86vw, 1250px);
+
+    height: min(76vh, 720px);
+
     touch-action: none;
+
     user-select: none;
+
+    /*
+       Sensorli doskada silliq harakat.
+    */
+
+    -webkit-user-select: none;
+
+    perspective: 1200px;
 }
 
 .orbit.dragging {
@@ -217,37 +320,58 @@ body {
 }
 
 
-/* RINGS */
+/* =========================================================
+   ORBIT RINGS
+   ========================================================= */
 
 .orbit-ring {
     position: absolute;
+
     left: 50%;
     top: 50%;
-    border: 1px solid rgba(100, 220, 255, 0.15);
+
+    border:
+        1px solid
+        rgba(100, 220, 255, 0.17);
+
     border-radius: 50%;
-    transform: translate(-50%, -50%);
+
+    transform:
+        translate(-50%, -50%);
+
     pointer-events: none;
 }
 
 .ring-1 {
-    width: 75%;
-    height: 75%;
-    animation: ringRotate 20s linear infinite;
+    width: 78%;
+    height: 78%;
+
+    animation:
+        ringRotate
+        20s
+        linear
+        infinite;
 }
 
 .ring-2 {
-    width: 58%;
-    height: 58%;
+    width: 60%;
+    height: 60%;
+
     border-style: dashed;
+
     opacity: 0.55;
+
     animation:
         ringRotateReverse
-        28s linear infinite;
+        28s
+        linear
+        infinite;
 }
 
 .ring-3 {
-    width: 40%;
-    height: 40%;
+    width: 42%;
+    height: 42%;
+
     opacity: 0.3;
 }
 
@@ -282,14 +406,23 @@ body {
 }
 
 
-/* CENTER */
+/* =========================================================
+   MARKAZIY DOIRA
+   ========================================================= */
 
 .center {
     position: absolute;
+
     left: 50%;
     top: 50%;
-    width: 220px;
-    height: 220px;
+
+    /*
+       Doskada uzoqdan ham ko‘rinishi uchun.
+    */
+
+    width: clamp(230px, 18vw, 285px);
+
+    height: clamp(230px, 18vw, 285px);
 
     transform:
         translate(-50%, -50%);
@@ -297,40 +430,55 @@ body {
     border-radius: 50%;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
 
     text-align: center;
 
-    padding: 25px;
+    padding: 30px;
 
     background:
         radial-gradient(
             circle at 35% 30%,
-            rgba(35, 110, 135, 0.9),
-            rgba(4, 22, 31, 0.95)
+            rgba(35, 110, 135, 0.92),
+            rgba(4, 22, 31, 0.97)
         );
 
     border:
-        1px solid rgba(120, 230, 255, 0.35);
+        1px solid
+        rgba(120, 230, 255, 0.4);
 
     box-shadow:
-        0 0 30px rgba(0, 190, 255, 0.18),
-        inset 0 0 30px rgba(0, 220, 255, 0.08);
+        0 0 40px
+        rgba(0, 190, 255, 0.2),
+
+        inset 0 0 35px
+        rgba(0, 220, 255, 0.08);
 
     z-index: 50;
 }
 
 .center::before {
     content: "";
+
     position: absolute;
-    inset: -12px;
+
+    inset: -14px;
+
     border-radius: 50%;
-    border: 1px solid rgba(100, 220, 255, 0.12);
+
+    border:
+        1px solid
+        rgba(100, 220, 255, 0.14);
+
     animation:
         centerPulse
-        3s ease-in-out
+        3s
+        ease-in-out
         infinite;
 }
 
@@ -339,38 +487,52 @@ body {
     0%,
     100% {
         transform: scale(1);
+
         opacity: 0.4;
     }
 
     50% {
         transform: scale(1.08);
+
         opacity: 1;
     }
 }
 
 .center-icon {
-    font-size: 42px;
-    margin-bottom: 8px;
+    font-size:
+        clamp(40px, 3vw, 58px);
+
+    margin-bottom: 10px;
+
     filter:
         drop-shadow(
-            0 0 12px
+            0 0 14px
             rgba(100, 230, 255, 0.6)
         );
 }
 
 .center h2 {
-    font-size: 20px;
-    margin-bottom: 8px;
+    font-size:
+        clamp(20px, 1.7vw, 28px);
+
+    margin-bottom: 10px;
 }
 
 .center p {
-    font-size: 11px;
+    font-size:
+        clamp(11px, 0.85vw, 15px);
+
     line-height: 1.5;
+
     color: #a8dce8;
+
+    max-width: 220px;
 }
 
 
-/* PROFESSION CARDS */
+/* =========================================================
+   PROFESSION CARDS
+   ========================================================= */
 
 .profession {
     --x: 0px;
@@ -384,8 +546,19 @@ body {
     left: 50%;
     top: 50%;
 
-    width: 190px;
-    min-height: 125px;
+    /*
+       INTERAKTIV DOSKA UCHUN KATTA KARTA
+    */
+
+    width:
+        clamp(205px, 15vw, 240px);
+
+    min-height:
+        clamp(135px, 12vh, 165px);
+
+    /*
+       JS transformni boshqaradi.
+    */
 
     transform:
         translate(
@@ -398,23 +571,28 @@ body {
 
     z-index: var(--z);
 
-    padding: 17px;
+    padding:
+        clamp(17px, 1.3vw, 24px);
 
-    border-radius: 18px;
+    border-radius: 20px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(20, 68, 82, 0.92),
-            rgba(5, 25, 35, 0.92)
+            rgba(20, 68, 82, 0.94),
+            rgba(5, 25, 35, 0.95)
         );
 
     border:
-        1px solid rgba(110, 225, 245, 0.28);
+        1px solid
+        rgba(110, 225, 245, 0.3);
 
     box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.35),
-        inset 0 0 20px rgba(100, 220, 255, 0.04);
+        0 18px 40px
+        rgba(0, 0, 0, 0.4),
+
+        inset 0 0 22px
+        rgba(100, 220, 255, 0.04);
 
     backdrop-filter: blur(12px);
 
@@ -426,65 +604,116 @@ body {
         border-color 0.3s ease,
         box-shadow 0.3s ease,
         filter 0.3s ease;
+
+    /*
+       Sensorli ekran uchun.
+    */
+
+    -webkit-tap-highlight-color: transparent;
 }
 
-.profession:hover,
+
+/* Touch / active */
+
+.profession:active,
 .profession.active {
+
     border-color:
-        rgba(130, 240, 255, 0.85);
+        rgba(130, 240, 255, 0.95);
 
     box-shadow:
-        0 0 30px
-        rgba(0, 210, 255, 0.28),
-        inset 0 0 25px
-        rgba(0, 220, 255, 0.08);
+        0 0 35px
+        rgba(0, 210, 255, 0.35),
+
+        inset 0 0 28px
+        rgba(0, 220, 255, 0.1);
+
+    filter:
+        brightness(1.15);
 }
 
+
+/* Sichqonchali PC uchun */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .profession:hover {
+
+        border-color:
+            rgba(130, 240, 255, 0.85);
+
+        box-shadow:
+            0 0 30px
+            rgba(0, 210, 255, 0.28),
+
+            inset 0 0 25px
+            rgba(0, 220, 255, 0.08);
+    }
+}
+
+
 .profession-icon {
-    font-size: 30px;
-    margin-bottom: 7px;
+    font-size:
+        clamp(32px, 2.5vw, 44px);
+
+    margin-bottom: 8px;
 }
 
 .profession-name {
-    font-size: 17px;
+    font-size:
+        clamp(17px, 1.3vw, 23px);
+
     font-weight: 700;
-    margin-bottom: 7px;
+
+    margin-bottom: 8px;
 }
 
 .profession-skills {
-    font-size: 10px;
-    line-height: 1.4;
+    font-size:
+        clamp(10px, 0.8vw, 14px);
+
+    line-height: 1.45;
+
     color: #9acbd6;
 }
 
 
-/* TEACHER */
+/* =========================================================
+   O‘QITUVCHI
+   ========================================================= */
 
 .teacher {
+
     border-color:
-        rgba(255, 210, 100, 0.5);
+        rgba(255, 210, 100, 0.6);
 
     box-shadow:
-        0 0 25px
-        rgba(255, 190, 70, 0.12);
+        0 0 30px
+        rgba(255, 190, 70, 0.15);
 }
 
 .teacher .profession-icon {
+
     filter:
         drop-shadow(
-            0 0 12px
-            rgba(255, 210, 100, 0.7)
+            0 0 14px
+            rgba(255, 210, 100, 0.75)
         );
 }
 
+
+/* MUHIM KASB */
+
 .ribbon {
+
     position: absolute;
-    top: -11px;
-    right: 14px;
 
-    padding: 4px 9px;
+    top: -12px;
+    right: 16px;
 
-    border-radius: 10px;
+    padding: 5px 11px;
+
+    border-radius: 11px;
 
     background:
         linear-gradient(
@@ -495,71 +724,115 @@ body {
 
     color: #15100a;
 
-    font-size: 8px;
+    font-size: 9px;
+
     font-weight: 800;
+
     letter-spacing: 1px;
+
+    white-space: nowrap;
 }
 
 
-/* CONTROLS */
+/* =========================================================
+   BOSHQARUV TUGMALARI
+   ========================================================= */
 
 .controls {
+
     position: absolute;
 
     left: 50%;
-    bottom: 8vh;
 
-    transform: translateX(-50%);
+    bottom: 6vh;
+
+    transform:
+        translateX(-50%);
 
     display: flex;
-    gap: 10px;
 
-    z-index: 100;
+    gap: 14px;
+
+    z-index: 300;
 }
 
 .controls button {
-    border: 1px solid
-        rgba(110, 225, 245, 0.25);
+
+    /*
+       Interaktiv doskada barmoq bilan bosishga qulay.
+    */
+
+    min-width: 110px;
+
+    min-height: 48px;
+
+    border:
+        1px solid
+        rgba(110, 225, 245, 0.3);
 
     background:
-        rgba(8, 35, 46, 0.8);
+        rgba(8, 35, 46, 0.88);
 
     color: #c5f4ff;
 
-    padding: 9px 15px;
+    padding: 11px 20px;
 
-    border-radius: 20px;
+    border-radius: 25px;
 
     cursor: pointer;
 
-    font-size: 11px;
+    font-size:
+        clamp(12px, 0.8vw, 15px);
 
     backdrop-filter: blur(10px);
 
     transition:
         background 0.25s,
-        border-color 0.25s;
+        border-color 0.25s,
+        transform 0.2s;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
-.controls button:hover {
+.controls button:active {
+
+    transform:
+        scale(0.95);
+
     background:
-        rgba(20, 80, 100, 0.8);
+        rgba(20, 80, 100, 0.9);
 
     border-color:
-        rgba(120, 235, 255, 0.65);
+        rgba(120, 235, 255, 0.75);
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+    .controls button:hover {
+
+        background:
+            rgba(20, 80, 100, 0.8);
+
+        border-color:
+            rgba(120, 235, 255, 0.65);
+    }
 }
 
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 .footer {
+
     position: absolute;
 
-    bottom: 2vh;
+    bottom: 1.5vh;
 
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width: 92%;
 
@@ -569,90 +842,236 @@ body {
 
     align-items: center;
 
-    color: rgba(170, 215, 225, 0.55);
+    color:
+        rgba(170, 215, 225, 0.55);
 
-    font-size: 8px;
+    font-size:
+        clamp(8px, 0.55vw, 11px);
 
     letter-spacing: 1px;
 
-    z-index: 20;
+    z-index: 200;
 }
 
 .footer-items {
+
     display: flex;
-    gap: 15px;
+
+    gap: 20px;
 }
 
 .quote {
+
     font-style: italic;
 }
 
 
-/* MOBILE */
+/* =========================================================
+   KICHIK / O‘RTA EKRAN
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .orbit {
+
+        width: 90vw;
+
+        height: 72vh;
+    }
+
+    .profession {
+
+        width: 195px;
+
+        min-height: 130px;
+    }
+
+    .center {
+
+        width: 220px;
+
+        height: 220px;
+    }
+
+}
+
+
+/* =========================================================
+   TELEFON
+   ========================================================= */
 
 @media (max-width: 700px) {
 
     .header {
+
         top: 3vh;
     }
 
+    .badge {
+
+        padding: 6px 13px;
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
     .header h1 {
-        font-size: 25px;
+
+        font-size: 24px;
     }
 
     .subtitle {
+
         letter-spacing: 4px;
+
+        font-size: 10px;
     }
 
     .orbit {
+
         width: 100vw;
+
         height: 68vh;
     }
 
     .center {
+
         width: 170px;
+
         height: 170px;
+
+        padding: 20px;
     }
 
     .center-icon {
+
         font-size: 32px;
     }
 
     .center h2 {
+
         font-size: 16px;
     }
 
     .center p {
+
         font-size: 9px;
     }
 
     .profession {
+
         width: 145px;
+
         min-height: 105px;
+
         padding: 12px;
     }
 
     .profession-icon {
+
         font-size: 25px;
     }
 
     .profession-name {
+
         font-size: 14px;
     }
 
     .profession-skills {
+
         font-size: 8px;
     }
 
     .footer-items {
+
         display: none;
     }
 
     .footer {
+
         justify-content: center;
     }
 
     .controls {
+
         bottom: 6vh;
+
+        gap: 8px;
     }
-                           }
+
+    .controls button {
+
+        min-width: 90px;
+
+        min-height: 44px;
+
+        padding: 8px 12px;
+
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   JUDA KICHIK TELEFON
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .header h1 {
+
+        font-size: 21px;
+    }
+
+    .subtitle {
+
+        font-size: 9px;
+    }
+
+    .center {
+
+        width: 145px;
+
+        height: 145px;
+    }
+
+    .center h2 {
+
+        font-size: 14px;
+    }
+
+    .profession {
+
+        width: 125px;
+
+        min-height: 95px;
+    }
+
+    .profession-name {
+
+        font-size: 12px;
+    }
+
+    .profession-skills {
+
+        font-size: 7px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+    }
+}
