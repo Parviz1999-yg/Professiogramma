@@ -10,10 +10,7 @@ body {
     height: 100%;
     overflow: hidden;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
     background: #06131d;
     color: white;
@@ -65,10 +62,7 @@ body {
             rgba(0, 140, 255, 0.12),
             transparent 30%
         );
-
-    pointer-events: none;
 }
-
 
 .glow {
     position: absolute;
@@ -80,7 +74,6 @@ body {
     pointer-events: none;
 }
 
-
 .glow-1 {
     width: 350px;
     height: 350px;
@@ -88,10 +81,8 @@ body {
     left: -100px;
     top: -100px;
 
-    background:
-        rgba(0, 200, 255, 0.12);
+    background: rgba(0, 200, 255, 0.12);
 }
-
 
 .glow-2 {
     width: 300px;
@@ -100,10 +91,8 @@ body {
     right: -80px;
     bottom: -80px;
 
-    background:
-        rgba(40, 100, 255, 0.12);
+    background: rgba(40, 100, 255, 0.12);
 }
-
 
 .glow-3 {
     width: 250px;
@@ -112,8 +101,7 @@ body {
     left: 45%;
     top: 35%;
 
-    background:
-        rgba(0, 255, 200, 0.06);
+    background: rgba(0, 255, 200, 0.06);
 }
 
 
@@ -148,8 +136,6 @@ body {
             black 75%,
             transparent
         );
-
-    pointer-events: none;
 }
 
 
@@ -166,18 +152,15 @@ body {
     pointer-events: none;
 }
 
-
 .particle {
     position: absolute;
 
     border-radius: 50%;
 
-    background:
-        rgba(180, 240, 255, 0.8);
+    background: rgba(180, 240, 255, 0.8);
 
     box-shadow:
-        0 0 8px
-        rgba(100, 220, 255, 0.8);
+        0 0 8px rgba(100, 220, 255, 0.8);
 
     animation:
         particleMove
@@ -186,7 +169,6 @@ body {
         var(--delay)
         infinite alternate;
 }
-
 
 @keyframes particleMove {
 
@@ -217,11 +199,10 @@ body {
 .header {
     position: absolute;
 
-    top: 3vh;
+    top: 2.5vh;
     left: 50%;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     z-index: 200;
 
@@ -232,11 +213,10 @@ body {
     pointer-events: none;
 }
 
-
 .badge {
     display: inline-block;
 
-    padding: 9px 22px;
+    padding: 7px 20px;
 
     border:
         1px solid
@@ -246,20 +226,16 @@ body {
 
     color: #a8f1ff;
 
-    font-size: 13px;
+    font-size: 12px;
 
     letter-spacing: 4px;
 
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 
     background:
         rgba(0, 40, 55, 0.55);
 
     backdrop-filter: blur(10px);
-
-    box-shadow:
-        0 0 18px
-        rgba(0, 210, 255, 0.12);
 
     animation:
         badgePulse
@@ -267,10 +243,9 @@ body {
         infinite;
 }
 
-
 .header h1 {
     font-size:
-        clamp(32px, 4vw, 68px);
+        clamp(30px, 3.7vw, 64px);
 
     font-weight: 800;
 
@@ -295,26 +270,21 @@ body {
 
     -webkit-text-fill-color: transparent;
 
-    text-shadow:
-        0 0 25px
-        rgba(70, 220, 255, 0.35);
-
     animation:
         nameLight
         5s ease-in-out
         infinite;
 }
 
-
 .subtitle {
-    margin-top: 10px;
+    margin-top: 7px;
 
     font-size:
-        clamp(17px, 1.7vw, 29px);
+        clamp(16px, 1.5vw, 26px);
 
     font-weight: 700;
 
-    letter-spacing: 10px;
+    letter-spacing: 9px;
 
     background:
         linear-gradient(
@@ -333,16 +303,11 @@ body {
 
     -webkit-text-fill-color: transparent;
 
-    text-shadow:
-        0 0 20px
-        rgba(40, 220, 255, 0.45);
-
     animation:
         professionLight
         4s ease-in-out
         infinite;
 }
-
 
 @keyframes badgePulse {
 
@@ -357,11 +322,10 @@ body {
     50% {
         opacity: 1;
         box-shadow:
-            0 0 28px
+            0 0 25px
             rgba(0, 210, 255, 0.3);
     }
 }
-
 
 @keyframes nameLight {
 
@@ -380,7 +344,6 @@ body {
         filter: brightness(0.9);
     }
 }
-
 
 @keyframes professionLight {
 
@@ -407,6 +370,7 @@ body {
 
 .stage {
     position: absolute;
+
     inset: 0;
 
     display: flex;
@@ -414,30 +378,25 @@ body {
     justify-content: center;
     align-items: center;
 
-    padding-top: 5vh;
+    padding-top: 7vh;
 }
 
 
 /* =========================================================
-   ORBIT
+   OVAL ORBIT
 ========================================================= */
 
 .orbit {
     position: relative;
 
-    width:
-        min(86vw, 1250px);
+    width: min(90vw, 1350px);
 
-    height:
-        min(76vh, 720px);
+    height: min(62vh, 560px);
 
     touch-action: none;
 
     user-select: none;
-
-    perspective: 1200px;
 }
-
 
 .orbit.dragging {
     cursor: grabbing;
@@ -445,7 +404,7 @@ body {
 
 
 /* =========================================================
-   RINGS
+   OVAL RINGS
 ========================================================= */
 
 .orbit-ring {
@@ -466,20 +425,18 @@ body {
     pointer-events: none;
 }
 
-
 .ring-1 {
-    width: 75%;
-    height: 75%;
+    width: 90%;
+    height: 70%;
 
     animation:
         ringRotate
         20s linear infinite;
 }
 
-
 .ring-2 {
-    width: 58%;
-    height: 58%;
+    width: 72%;
+    height: 55%;
 
     border-style: dashed;
 
@@ -490,14 +447,12 @@ body {
         28s linear infinite;
 }
 
-
 .ring-3 {
-    width: 40%;
-    height: 40%;
+    width: 50%;
+    height: 38%;
 
     opacity: 0.3;
 }
-
 
 @keyframes ringRotate {
 
@@ -513,7 +468,6 @@ body {
             rotate(360deg);
     }
 }
-
 
 @keyframes ringRotateReverse {
 
@@ -542,10 +496,10 @@ body {
     top: 50%;
 
     width:
-        clamp(230px, 18vw, 285px);
+        clamp(190px, 17vw, 260px);
 
     height:
-        clamp(230px, 18vw, 285px);
+        clamp(190px, 17vw, 260px);
 
     transform:
         translate(-50%, -50%);
@@ -561,7 +515,7 @@ body {
 
     text-align: center;
 
-    padding: 30px;
+    padding: 25px;
 
     background:
         radial-gradient(
@@ -575,22 +529,21 @@ body {
         rgba(120, 230, 255, 0.4);
 
     box-shadow:
-        0 0 40px
+        0 0 35px
         rgba(0, 190, 255, 0.22),
 
-        inset 0 0 35px
+        inset 0 0 30px
         rgba(0, 220, 255, 0.1);
 
     z-index: 50;
 }
-
 
 .center::before {
     content: "";
 
     position: absolute;
 
-    inset: -14px;
+    inset: -12px;
 
     border-radius: 50%;
 
@@ -603,7 +556,6 @@ body {
         3s ease-in-out
         infinite;
 }
-
 
 @keyframes centerPulse {
 
@@ -619,29 +571,26 @@ body {
     }
 }
 
-
 .center-icon {
-    font-size: 48px;
+    font-size: 42px;
 
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 
     filter:
         drop-shadow(
-            0 0 15px
-            rgba(100, 230, 255, 0.7)
+            0 0 12px
+            rgba(100, 230, 255, 0.6)
         );
 }
 
-
 .center h2 {
-    font-size: 23px;
+    font-size: 20px;
 
-    margin-bottom: 9px;
+    margin-bottom: 8px;
 }
 
-
 .center p {
-    font-size: 12px;
+    font-size: 11px;
 
     line-height: 1.5;
 
@@ -660,14 +609,14 @@ body {
     top: 50%;
 
     width:
-        clamp(205px, 15vw, 240px);
+        clamp(175px, 13vw, 220px);
 
     min-height:
-        clamp(135px, 12vh, 165px);
+        clamp(120px, 11vh, 150px);
 
-    padding: 20px;
+    padding: 17px;
 
-    border-radius: 20px;
+    border-radius: 18px;
 
     background:
         linear-gradient(
@@ -681,10 +630,10 @@ body {
         rgba(110, 225, 245, 0.3);
 
     box-shadow:
-        0 18px 40px
+        0 15px 35px
         rgba(0, 0, 0, 0.4),
 
-        inset 0 0 22px
+        inset 0 0 20px
         rgba(100, 220, 255, 0.05);
 
     backdrop-filter: blur(12px);
@@ -695,13 +644,8 @@ body {
 
     transition:
         border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        filter 0.3s ease;
-
-    -webkit-tap-highlight-color:
-        transparent;
+        box-shadow 0.3s ease;
 }
-
 
 .profession:hover,
 .profession.active {
@@ -709,41 +653,38 @@ body {
         rgba(130, 240, 255, 0.9);
 
     box-shadow:
-        0 0 35px
+        0 0 30px
         rgba(0, 210, 255, 0.3),
 
-        inset 0 0 28px
-        rgba(0, 220, 255, 0.1);
+        inset 0 0 25px
+        rgba(0, 220, 255, 0.08);
 }
-
 
 .profession-icon {
-    font-size: 38px;
+    font-size: 32px;
 
-    margin-bottom: 9px;
+    margin-bottom: 7px;
 }
 
-
 .profession-name {
-    font-size: 20px;
+    font-size: 18px;
 
     font-weight: 700;
 
-    margin-bottom: 9px;
+    margin-bottom: 7px;
 }
 
-
 .profession-skills {
-    font-size: 11px;
+    font-size: 10px;
 
-    line-height: 1.5;
+    line-height: 1.4;
 
     color: #9acbd6;
 }
 
 
 /* =========================================================
-   TEACHER CARD
+   TEACHER
 ========================================================= */
 
 .teacher {
@@ -751,19 +692,17 @@ body {
         rgba(255, 210, 100, 0.55);
 
     box-shadow:
-        0 0 30px
+        0 0 25px
         rgba(255, 190, 70, 0.14);
 }
-
 
 .teacher .profession-icon {
     filter:
         drop-shadow(
-            0 0 14px
+            0 0 12px
             rgba(255, 210, 100, 0.75)
         );
 }
-
 
 .teacher .profession-name {
     color: #fff3bf;
@@ -773,14 +712,13 @@ body {
         rgba(255, 210, 100, 0.5);
 }
 
-
 .ribbon {
     position: absolute;
 
-    top: -12px;
-    right: 16px;
+    top: -11px;
+    right: 14px;
 
-    padding: 5px 10px;
+    padding: 4px 9px;
 
     border-radius: 10px;
 
@@ -793,7 +731,7 @@ body {
 
     color: #15100a;
 
-    font-size: 9px;
+    font-size: 8px;
 
     font-weight: 800;
 
@@ -809,48 +747,46 @@ body {
     position: absolute;
 
     left: 50%;
-    bottom: 8vh;
+    bottom: 3.5vh;
 
     transform:
         translateX(-50%);
 
     display: flex;
 
-    gap: 12px;
+    gap: 10px;
 
-    z-index: 100;
+    z-index: 400;
 }
 
-
 .controls button {
-    min-width: 110px;
-    min-height: 48px;
+    min-width: 105px;
+
+    min-height: 42px;
 
     border:
         1px solid
         rgba(110, 225, 245, 0.3);
 
     background:
-        rgba(8, 35, 46, 0.85);
+        rgba(8, 35, 46, 0.9);
 
     color: #c5f4ff;
 
-    padding: 10px 18px;
+    padding: 8px 15px;
 
-    border-radius: 25px;
+    border-radius: 22px;
 
     cursor: pointer;
 
-    font-size: 13px;
+    font-size: 11px;
 
     backdrop-filter: blur(10px);
 
     transition:
         background 0.25s,
-        border-color 0.25s,
-        transform 0.2s;
+        border-color 0.25s;
 }
-
 
 .controls button:hover {
     background:
@@ -858,8 +794,6 @@ body {
 
     border-color:
         rgba(120, 235, 255, 0.7);
-
-    transform: translateY(-2px);
 }
 
 
@@ -870,41 +804,33 @@ body {
 .footer {
     position: absolute;
 
-    bottom: 2vh;
+    left: 3vw;
+    bottom: 2.5vh;
 
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    width: 92%;
+    width: auto;
 
     display: flex;
-
-    justify-content: space-between;
 
     align-items: center;
 
     color:
         rgba(170, 215, 225, 0.55);
 
-    font-size: 9px;
+    font-size: 8px;
 
     letter-spacing: 1px;
 
     z-index: 20;
 }
 
-
 .footer-items {
     display: flex;
 
-    gap: 15px;
+    gap: 13px;
 }
 
-
 .quote {
-    font-style: italic;
+    display: none;
 }
 
 
@@ -919,11 +845,11 @@ body {
     bottom: 2.5vh;
 
     font-size:
-        clamp(14px, 1.2vw, 22px);
+        clamp(12px, 1vw, 19px);
 
     font-weight: 600;
 
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
 
     color: #b9f5ff;
 
@@ -944,7 +870,6 @@ body {
     white-space: nowrap;
 }
 
-
 .teacher-author strong {
     color: #ffffff;
 
@@ -955,34 +880,20 @@ body {
         rgba(255, 255, 255, 0.95),
 
         0 0 20px
-        rgba(80, 220, 255, 0.9),
-
-        0 0 35px
-        rgba(0, 190, 255, 0.55);
+        rgba(80, 220, 255, 0.9);
 }
-
 
 @keyframes teacherGlow {
 
     0%,
     100% {
-        opacity: 0.82;
-
-        filter:
-            brightness(0.95);
-
-        transform:
-            translateY(0);
+        opacity: 0.8;
+        filter: brightness(0.95);
     }
 
     50% {
         opacity: 1;
-
-        filter:
-            brightness(1.25);
-
-        transform:
-            translateY(-2px);
+        filter: brightness(1.25);
     }
 }
 
@@ -993,29 +904,19 @@ body {
 
 @media (min-width: 1200px) {
 
-    .header {
-        top: 2.5vh;
-    }
-
-    .stage {
-        padding-top: 4vh;
+    .orbit {
+        width: min(88vw, 1450px);
+        height: min(58vh, 570px);
     }
 
     .profession {
+        width: 205px;
+        min-height: 135px;
+    }
+
+    .center {
         width: 235px;
-        min-height: 155px;
-    }
-
-    .profession-icon {
-        font-size: 40px;
-    }
-
-    .profession-name {
-        font-size: 21px;
-    }
-
-    .profession-skills {
-        font-size: 12px;
+        height: 235px;
     }
 
 }
@@ -1028,26 +929,37 @@ body {
 @media (max-width: 900px) {
 
     .header h1 {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     .subtitle {
-        font-size: 18px;
-        letter-spacing: 7px;
+        font-size: 17px;
+        letter-spacing: 6px;
+    }
+
+    .orbit {
+        width: 94vw;
+        height: 55vh;
     }
 
     .profession {
-        width: 190px;
-        min-height: 130px;
+        width: 170px;
+        min-height: 120px;
     }
 
     .center {
-        width: 210px;
-        height: 210px;
+        width: 195px;
+        height: 195px;
+    }
+
+    .footer {
+        display: none;
     }
 
     .teacher-author {
-        font-size: 13px;
+        right: 3vw;
+        bottom: 2vh;
+        font-size: 12px;
     }
 
 }
@@ -1060,107 +972,45 @@ body {
 @media (max-width: 700px) {
 
     .header {
-        top: 2.5vh;
+        top: 2vh;
     }
 
     .badge {
-        font-size: 9px;
-        padding: 7px 14px;
-        letter-spacing: 3px;
+        font-size: 8px;
+        padding: 6px 12px;
     }
 
     .header h1 {
-        font-size: 25px;
+        font-size: 23px;
         letter-spacing: 1px;
     }
 
     .subtitle {
-        margin-top: 7px;
-        font-size: 13px;
+        font-size: 12px;
         letter-spacing: 4px;
     }
 
     .orbit {
         width: 100vw;
-        height: 68vh;
+        height: 52vh;
     }
 
     .center {
-        width: 170px;
-        height: 170px;
-        padding: 20px;
+        width: 155px;
+        height: 155px;
+        padding: 18px;
     }
 
     .center-icon {
-        font-size: 32px;
+        font-size: 30px;
     }
 
     .center h2 {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .center p {
-        font-size: 9px;
-    }
-
-    .profession {
-        width: 145px;
-        min-height: 105px;
-        padding: 12px;
-    }
-
-    .profession-icon {
-        font-size: 25px;
-    }
-
-    .profession-name {
-        font-size: 14px;
-    }
-
-    .profession-skills {
         font-size: 8px;
-    }
-
-    .footer-items {
-        display: none;
-    }
-
-    .footer {
-        justify-content: center;
-    }
-
-    .controls {
-        bottom: 6vh;
-    }
-
-    .controls button {
-        min-width: 90px;
-        min-height: 42px;
-        font-size: 11px;
-    }
-
-    .teacher-author {
-        right: 3vw;
-        bottom: 2vh;
-        font-size: 11px;
-    }
-
-}
-
-
-/* =========================================================
-   VERY SMALL SCREEN
-========================================================= */
-
-@media (max-width: 420px) {
-
-    .header h1 {
-        font-size: 21px;
-    }
-
-    .subtitle {
-        font-size: 11px;
-        letter-spacing: 3px;
     }
 
     .profession {
@@ -1171,43 +1021,62 @@ body {
 
     .profession-icon {
         font-size: 22px;
-        margin-bottom: 5px;
     }
 
     .profession-name {
         font-size: 13px;
-        margin-bottom: 5px;
     }
 
     .profession-skills {
         font-size: 7px;
     }
 
+    .controls {
+        bottom: 7vh;
+    }
+
+    .controls button {
+        min-width: 82px;
+        min-height: 40px;
+    }
+
+    .teacher-author {
+        right: 50%;
+        transform: translateX(50%);
+
+        bottom: 2vh;
+
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .profession {
+        width: 110px;
+        min-height: 88px;
+    }
+
     .center {
-        width: 150px;
-        height: 150px;
+        width: 140px;
+        height: 140px;
     }
 
     .teacher-author {
         font-size: 9px;
     }
-
-}
-
-
-/* =========================================================
-   TOUCH DEVICES
-========================================================= */
-
-@media (hover: none) and (pointer: coarse) {
-
-    .profession:hover {
-        border-color:
-            rgba(110, 225, 245, 0.3);
-
-        box-shadow:
-            0 18px 40px
-            rgba(0, 0, 0, 0.4);
-    }
-
 }
