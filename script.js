@@ -11,11 +11,10 @@ const particles = document.getElementById("particles");
 
 
 /* =========================================================
-   ORBIT SETTINGS
+   SETTINGS
 ========================================================= */
 
 let rotation = 0;
-
 let paused = false;
 let dragging = false;
 
@@ -23,27 +22,27 @@ let lastX = 0;
 
 let speed = 0.025;
 
-let radius = 250;
+
+/* OVAL O'LCHAMI */
+let radiusX = 500;
+let radiusY = 190;
 
 
 /* =========================================================
-   CARD DATA
+   CARDS
 ========================================================= */
 
 const cards = Array.from(professions).map(
     (element, index) => ({
-
         element: element,
-
         angle:
             (360 / professions.length) * index
-
     })
 );
 
 
 /* =========================================================
-   RESPONSIVE RADIUS
+   RESPONSIVE OVAL
 ========================================================= */
 
 function updateRadius() {
@@ -55,39 +54,70 @@ function updateRadius() {
         window.innerHeight;
 
 
-    if (width >= 1200) {
+    if (width >= 1400) {
 
-        radius =
+        radiusX =
             Math.min(
-                width * 0.23,
-                height * 0.30
+                width * 0.36,
+                540
             );
 
+        radiusY =
+            Math.min(
+                height * 0.16,
+                190
+            );
+    }
+
+    else if (width >= 1000) {
+
+        radiusX =
+            Math.min(
+                width * 0.34,
+                470
+            );
+
+        radiusY =
+            Math.min(
+                height * 0.15,
+                165
+            );
     }
 
     else if (width >= 700) {
 
-        radius =
+        radiusX =
             Math.min(
-                width * 0.27,
-                height * 0.27
+                width * 0.37,
+                390
             );
 
+        radiusY =
+            Math.min(
+                height * 0.14,
+                145
+            );
     }
 
     else {
 
-        radius =
+        radiusX =
             Math.min(
-                width * 0.35,
-                height * 0.24
+                width * 0.39,
+                280
+            );
+
+        radiusY =
+            Math.min(
+                height * 0.13,
+                105
             );
     }
 }
 
 
 /* =========================================================
-   UPDATE CARDS
+   UPDATE OVAL CARDS
 ========================================================= */
 
 function updateCards() {
@@ -101,23 +131,35 @@ function updateCards() {
             angle * Math.PI / 180;
 
 
+        /*
+         * X katta
+         * Y kichik
+         *
+         * Shu sababli aylana
+         * gorizontal ovalga aylanadi.
+         */
+
         const x =
-            Math.sin(rad) * radius;
+            Math.sin(rad) * radiusX;
 
         const y =
-            -Math.cos(rad) * radius;
+            -Math.cos(rad) * radiusY;
 
+
+        /*
+         * Old-orqa chuqurlik
+         */
 
         const depth =
             (Math.cos(rad) + 1) / 2;
 
 
         const scale =
-            0.72 + depth * 0.28;
+            0.76 + depth * 0.24;
 
 
         const opacity =
-            0.55 + depth * 0.45;
+            0.60 + depth * 0.40;
 
 
         const zIndex =
@@ -173,7 +215,6 @@ function animate(currentTime) {
 
     updateCards();
 
-
     requestAnimationFrame(
         animate
     );
@@ -205,7 +246,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   DRAG / TOUCH
+   DRAG
 ========================================================= */
 
 orbit.addEventListener(
@@ -296,7 +337,6 @@ orbit.addEventListener(
     stopDragging
 );
 
-
 orbit.addEventListener(
     "pointercancel",
     stopDragging
@@ -304,7 +344,7 @@ orbit.addEventListener(
 
 
 /* =========================================================
-   PROFESSION CLICK
+   CARD CLICK
 ========================================================= */
 
 professions.forEach(
@@ -346,7 +386,6 @@ professions.forEach(
 
 
                 centerIcon.animate(
-
                     [
                         {
                             transform:
@@ -369,7 +408,6 @@ professions.forEach(
                             opacity: 1
                         }
                     ],
-
                     {
                         duration: 450,
 
@@ -386,7 +424,7 @@ professions.forEach(
 
 
 /* =========================================================
-   PAUSE BUTTON
+   PAUSE
 ========================================================= */
 
 if (pauseBtn) {
@@ -410,6 +448,7 @@ if (pauseBtn) {
 
                 pauseBtn.innerHTML =
                     "⏸ <span>Pauza</span>";
+
             }
 
         }
@@ -419,7 +458,7 @@ if (pauseBtn) {
 
 
 /* =========================================================
-   RESET BUTTON
+   RESET
 ========================================================= */
 
 if (resetBtn) {
@@ -437,6 +476,7 @@ if (resetBtn) {
 
                 pauseBtn.innerHTML =
                     "⏸ <span>Pauza</span>";
+
             }
 
 
@@ -534,7 +574,6 @@ function createParticles() {
         particle.style.width =
             size + "px";
 
-
         particle.style.height =
             size + "px";
 
@@ -570,7 +609,6 @@ if (teacher) {
             );
 
         },
-
         1200
     );
 
